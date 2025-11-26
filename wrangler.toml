@@ -1,4 +1,4 @@
-name = "shopify-to-medusajs-csv-converter"
+name = "shopify-medusa-csv-converter"
 compatibility_date = "2025-11-26"
 
 [assets]
