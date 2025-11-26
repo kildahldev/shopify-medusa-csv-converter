@@ -1,0 +1,5 @@
+name = "shopify-to-medusajs-csv-converter"
+compatibility_date = "2025-11-26"
+
+[assets]
+directory = "./dist"
