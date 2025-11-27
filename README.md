@@ -8,7 +8,6 @@ A simple, client-side tool to convert Shopify product exports for MedusaJS.
 - **HTML to Markdown**: Optional conversion of product descriptions
 - **Smart Status Mapping**: Shopify's `Published` → Medusa's `published`/`draft`
 - **Currency Support**: Specify target currency (EUR, USD, etc.)
-- **Collections Note**: Shopify doesn't export collection data - add manually after import
 
 ## Usage
 
