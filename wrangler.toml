@@ -1,4 +1,5 @@
 name = "shopify-medusa-csv-converter"
-main = "worker.js"
-compatibility_date = "2024-01-01"
-assets = { directory = "./dist" }
+compatibility_date = "2025-11-26"
+
+[assets]
+directory = "./dist"
