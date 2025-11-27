@@ -14,6 +14,8 @@ export const Converter: React.FC = () => {
     const [downloadUrl, setDownloadUrl] = useState<string | null>(null);
     const [stats, setStats] = useState<{ products: number; variants: number } | null>(null);
     const [convertMarkdown, setConvertMarkdown] = useState(false);
+    const [useSalesChannel, setUseSalesChannel] = useState(false);
+    const [salesChannelValue, setSalesChannelValue] = useState('default');
 
     const handleFileSelect = (selectedFile: File) => {
         setFile(selectedFile);
@@ -40,7 +42,8 @@ export const Converter: React.FC = () => {
 
             const medusaProducts = convertToMedusaCSV(shopifyProducts, {
                 currencyCode,
-                convertDescriptionToMarkdown: convertMarkdown
+                convertDescriptionToMarkdown: convertMarkdown,
+                salesChannel: useSalesChannel ? salesChannelValue : undefined
             });
             const csvString = generateMedusaCSV(medusaProducts);
 
@@ -137,6 +140,31 @@ export const Converter: React.FC = () => {
                                                     />
                                                     <span className="text-sm text-slate-600">Convert HTML to Markdown</span>
                                                 </label>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <label className="block text-xs font-medium text-slate-700 mb-1.5 uppercase tracking-wide">
+                                                Sales Channel
+                                            </label>
+                                            <div className="space-y-2">
+                                                <label className="flex items-center gap-2 cursor-pointer select-none">
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={useSalesChannel}
+                                                        onChange={(e) => setUseSalesChannel(e.target.checked)}
+                                                        className="w-4 h-4 text-indigo-600 rounded border-slate-300 focus:ring-indigo-500"
+                                                    />
+                                                    <span className="text-sm text-slate-600">Add to sales channel</span>
+                                                </label>
+                                                {useSalesChannel && (
+                                                    <input
+                                                        type="text"
+                                                        value={salesChannelValue}
+                                                        onChange={(e) => setSalesChannelValue(e.target.value)}
+                                                        placeholder="default"
+                                                        className="block w-full rounded-lg border-slate-300 shadow-sm focus:border-slate-500 focus:ring-slate-500 text-sm p-2 border transition-all"
+                                                    />
+                                                )}
                                             </div>
                                         </div>
                                     </div>

@@ -74,6 +74,7 @@ import TurndownService from 'turndown';
 export interface ConverterOptions {
     currencyCode: string;
     convertDescriptionToMarkdown: boolean;
+    salesChannel?: string; // Optional sales channel ID/name
 }
 
 export const convertToMedusaCSV = (shopifyProducts: ShopifyProduct[], options: ConverterOptions): MedusaProduct[] => {
@@ -129,7 +130,7 @@ export const convertToMedusaCSV = (shopifyProducts: ShopifyProduct[], options: C
                 'Product MID Code': '',
                 'Product Material': '',
                 'Shipping Profile Id': '',
-                'Product Sales Channel 1': '',
+                'Product Sales Channel 1': isFirstVariant && options.salesChannel ? options.salesChannel : '',
                 'Product Collection Id': '',
                 'Product Type Id': isFirstVariant ? mainProduct.Type : '',
                 'Product Discountable': isFirstVariant ? 'TRUE' : '',
