@@ -118,7 +118,7 @@ export const convertToMedusaCSV = (shopifyProducts: ShopifyProduct[], options: C
                 'Product Title': isFirstVariant ? mainProduct.Title : '',
                 'Product Subtitle': '',
                 'Product Description': description,
-                'Product Status': isFirstVariant ? (mainProduct.Published === 'TRUE' ? 'published' : 'draft') : '',
+                'Product Status': isFirstVariant ? (mainProduct.Published?.toUpperCase() === 'TRUE' ? 'published' : 'draft') : '',
                 'Product Thumbnail': isFirstVariant ? (images[0] || '') : '',
                 'Product Weight': isFirstVariant ? mainProduct['Variant Grams'] : '',
                 'Product Length': '',
