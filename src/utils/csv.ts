@@ -102,7 +102,10 @@ export const convertToMedusaCSV = (shopifyProducts: ShopifyProduct[], options: C
             .filter(Boolean)
             .filter((v, i, a) => a.indexOf(v) === i); // Unique images
 
-        products.forEach((variant, index) => {
+        // Filter out rows that are just for additional images (no variant price)
+        const validVariants = products.filter(p => p['Variant Price'] && p['Variant Price'].trim() !== '');
+
+        validVariants.forEach((variant, index) => {
             const isFirstVariant = index === 0;
 
             let description = '';
